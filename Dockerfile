@@ -10,7 +10,7 @@ RUN rpm --import http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7 \
 # epel-release openssh-clients
 RUN rpm --rebuilddb &&  yum -y install epel-release pwgen openssh-server shadow-utils tar
 #Make run.sh
-RUN echo -e "echo \"password\" || ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key  && echo \"password\" || ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key && echo \"password\" || ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key && echo \"root:password\" | chpasswd && /usr/sbin/sshd -D" > /run.sh
+RUN echo -e "echo \"password\" | ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key  && echo \"password\" | ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key && echo \"password\" | ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key && echo \"root:password\" | chpasswd && /usr/sbin/sshd -D" > /run.sh
 
 RUN chmod +x /*.sh
 
