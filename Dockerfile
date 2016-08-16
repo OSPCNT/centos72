@@ -17,7 +17,7 @@ RUN chmod +x /*.sh
 #Clean
 RUN rm -rf /var/cache/yum/* \
     && yum clean all
-
-EXPOSE 22
+#Expose port range
+EXPOSE 22-65530
 CMD ["/bin/bash","/run.sh"]
 
